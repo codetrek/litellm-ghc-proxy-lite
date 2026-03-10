@@ -2,7 +2,7 @@ name: "litellm"
 
 services:
   ghc-proxy:
-    image: litellm/litellm:v1.81.14-stable
+    image: litellm/litellm:v1.81.14-stable.patch1
     container_name: litellm-proxy-lite
     network_mode: bridge
     restart: unless-stopped
