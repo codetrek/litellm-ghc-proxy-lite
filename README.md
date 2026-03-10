@@ -36,7 +36,6 @@ python3 generate_env.py
 
 ```
 Master Key: litellm-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-Admin Password: xxxxxxxxxxxxxxxx
 ```
 
 > 如果 `.env` 已存在则会跳过，不会覆盖。如需重新生成，请先删除 `.env`。
