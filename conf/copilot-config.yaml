@@ -6,9 +6,6 @@
 litellm_settings:
   drop_params: true
 
-general_settings:
-  database_url: postgresql://litellm:litellm@postgres:5432/litellm
-
 model_list:
 
   - model_name: gpt-4

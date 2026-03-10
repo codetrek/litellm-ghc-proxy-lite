@@ -11,7 +11,6 @@ def generate_password(length=16):
 # Generate unique keys
 master_key = f"litellm-{uuid.uuid4()}"
 salt_key = f"litellm-{uuid.uuid4()}"
-admin_password = generate_password()
 session_secret = generate_password(32)
 
 # Create .env file (do not overwrite if it already exists)
@@ -21,8 +20,5 @@ else:
     with open('.env', 'w') as f:
         f.write(f'LITELLM_MASTER_KEY={master_key}\n')
         f.write(f'LITELLM_SALT_KEY={salt_key}\n')
-        f.write('UI_USERNAME=ImNotAdmin\n')
-        f.write(f'UI_PASSWORD={admin_password}\n')
 
     print(f'Master Key: {master_key}')
-    print(f'Admin Password: {admin_password}\n')
