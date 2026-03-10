@@ -1,13 +1,10 @@
 name: "litellm"
 
-networks:
-  litellm-net:
-    driver: bridge
-
 services:
   ghc-proxy:
     image: litellm/litellm:v1.81.14-stable
     container_name: litellm-proxy-lite
+    network_mode: bridge
     restart: unless-stopped
     ports:
       - "127.0.0.1:4000:4000"
@@ -22,7 +19,3 @@ services:
       - ./conf/copilot-config.yaml:/app/copilot-config.yaml
       - ./litellm-data:/root/.config/litellm
     command: ["--config", "/app/copilot-config.yaml", "--port", "4000"]
-   networks:
-      - litellm-net
-
-
