@@ -3,12 +3,13 @@
 通过 [LiteLLM](https://github.com/BerriAI/litellm) 代理 GitHub Copilot 的 AI 模型，提供 OpenAI 兼容的 API 接口。一个账号即可访问 Claude、GPT、Gemini 等多家模型。
 
 ## 支持的模型
+  ref [copilot-config](./conf/copilot-config.yaml)
 
 | 厂商 | 模型 |
 |------|------|
 | **Anthropic** | Claude Opus 4.6 / 4.5 / 4.1, Claude Sonnet 4.5 / 4, Claude Haiku 4.5 |
-| **OpenAI** | GPT-5.2 / 5.1 / 5 / 5-mini, GPT-5.1-Codex / Codex-Max, GPT-5.2-Codex, GPT-4.1 / 4o / 4o-mini / 4, GPT-3.5-turbo |
-| **Google** | Gemini 2.5 Pro |
+| **OpenAI** | GPT-5.4 / 5.4-mini / 5.3-codex / 5.2 / 5.1 / 5 / 5-mini, GPT-5.1-Codex, GPT-5.2-Codex, GPT-4.1 / 4o / 4o-mini / 4, GPT-3.5-turbo |
+| **Google** | Gemini 2.5 Pro, Gemini 3.1 Pro |
 
 ## 前置要求
 
@@ -64,7 +65,7 @@ docker compose up -d
 查看日志获取认证码：
 
 ```bash
-docker logs -f litellm-proxy
+docker logs -f litellm-proxy-lite
 ```
 
 日志中会出现类似提示：
@@ -109,17 +110,6 @@ curl -X POST http://localhost:4000/chat/completions \
 
 可以在任何支持 OpenAI API 格式的客户端/工具中使用，只需将 base URL 指向 `http://localhost:4000`。
 
-### Web 管理界面
-
-访问 http://localhost:4000/ui ，使用以下凭据登录：
-
-- **用户名:** `ImNotAdmin`
-- **密码:** `generate_env.py` 生成时输出的 Admin Password
-
-### API 文档
-
-访问 http://localhost:4000/docs 查看 Swagger API 文档。
-
 ## 常用命令
 
 ```bash
@@ -130,10 +120,10 @@ docker compose up -d
 docker compose down
 
 # 查看日志
-docker logs -f litellm-proxy
+docker logs -f litellm-proxy-lite
 
 # 重启代理（修改配置后）
-docker compose restart ghc-proxy
+docker compose restart ghc-proxy-lite
 
 # 列出 GitHub Copilot 所有可用模型
 ./list-copilot-models.sh
@@ -162,7 +152,7 @@ model_list:
 运行 `./list-copilot-models.sh` 可查看所有可用模型及其参数，将需要的模型复制到配置文件中。修改后重启服务生效：
 
 ```bash
-docker compose restart ghc-proxy
+docker compose restart ghc-proxy-lite
 ```
 
 ## 项目结构
